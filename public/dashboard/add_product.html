@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Search | Marketplace - Nayana Travel Agency</title>
+  <link rel="stylesheet" href="/styles/theme.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+
+  <!-- Fontawesome 6 icons -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta1/css/all.css" crossorigin="anonymous"
+    referrerpolicy="no-referrer" />
+</head>
+<script type="text/javascript" src="https://cdn.weglot.com/weglot.min.js"></script>
+<script>
+  Weglot.initialize({
+    api_key: 'wg_d4e27959767375d41da670c79339b8551'
+  });
+</script>
+<style>
+  .h-max-50 {
+    max-height: 50vh;
+  }
+
+  .category-section {
+    padding: 60px 0;
+  }
+
+  .image-hover {
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  .image-hover:hover {
+    transform: translateY(-5px);
+  }
+
+  .category-image img {
+    width: 100%;
+    height: auto;
+  }
+
+  .category-title {
+    margin-top: 10px;
+    font-size: 20px;
+    font-weight: bold;
+  }
+</style>
+
+<body>
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">Nayana Travel Agency</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="/">Home</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              Services
+            </a>
+            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+              <li class="nav-item">
+                <a class="nav-link" href="/flights">Flights</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/hotels">Hotels</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/shuttles">Shuttles</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/map">Map</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/weather">Weather</a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/messaging">Messaging</a>
+              </li>
+            </ul>
+          </li>
+
+          <li class="nav-item">
+            <a class="nav-link" href="/explore">Explore</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/marketplace">Marketplace</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/reviews">Reviews</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/contact">Contact</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/about">About</a>
+          </li>
+
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <section class="bg-body-secondary">
+      <div class="container py-5">
+        <h2 class="mb-4">Add New Product</h2>
+        <form>
+          <div class="mb-3">
+            <label for="product-name" class="form-label">Product Name</label>
+            <input type="text" class="form-control" id="product-name" placeholder="Enter product name" required>
+          </div>
+          <div class="mb-3">
+            <label for="location" class="form-label">Location</label>
+            <select class="form-select" id="location" name="location">
+              <option disabled selected>--SELECT--</option>
+
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="category" class="form-label">Category</label>
+            <select class="form-select" id="category" name="category" onchange="updateFormProperties()">
+              <option disabled selected>--SELECT--</option>
+              <option value="accommodation">Accommodation</option>
+              <option value="tours">Tours and Activities</option>
+              <option value="transportation">Transportation</option>
+              <option value="experiences">Experiences</option>
+              <option value="wildlife">Wildlife and Nature</option>
+              <option value="beaches">Beaches and Coastal Activities</option>
+              <option value="historical">Historical and Cultural Sites</option>
+              <option value="food">Food and Dining</option>
+              <option value="shopping">Shopping and Souvenirs</option>
+              <option value="wellness">Wellness and Spa</option>
+            </select>
+          </div>
+
+          <div class="mb-3">
+            <label for="price" class="form-label">Price</label>
+            <input type="number" class="form-control" id="price" placeholder="Enter price" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="discount" class="form-label">Discount</label>
+            <input type="number" class="form-control" id="discount" placeholder="Enter discount">
+          </div>
+
+          <div class="mb-3">
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" class="form-control" rows="4" placeholder="Enter description"
+              required></textarea>
+          </div>
+
+          <div class="mb-3">
+            <label for="image" class="form-label">Image</label>
+            <input type="file" class="form-control" id="image" required>
+          </div>
+
+          <div class="mb-3">
+            <label for="quantity" class="form-label">Quantity</label>
+            <input type="number" class="form-control" id="quantity" placeholder="Enter quantity" required>
+          </div>
+
+          <div id="additional-properties"></div>
+
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+      </div>
+    </section>
+
+
+  </main>
+
+  <footer class="bg-light py-3 mt-3">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <p class="text-muted mb-0">Nayana Travel Agency &copy; 2023</p>
+        </div>
+        <div class="col-md-6">
+          <p class="text-muted mb-0 text-right">Designed by Nayanajitha</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+
+  <script>
+    function generateFormElement(label, name, type, placeholder, required = false) {
+      return `
+                <div class="mb-3">
+                  <label for="${name}" class="form-label">${label}</label>
+                  <input type="${type}" id="${name}" name="${name}" class="${type == "checkbox" ? "form-check-input form-check-inline" : "form-control"}" placeholder="${placeholder}" ${required ? 'required' : ''}>
+                </div>
+              `;
+    }
+
+    function generateSelectElement(label, name, options) {
+      let optionsHTML = '';
+      for (let i = 0; i < options.length; i++) {
+        optionsHTML += `<option value="${options[i].value}">${options[i].label}</option>`;
+      }
+      return `
+                <div class="mb-3">
+                  <label for="${name}" class="form-label">${label}</label>
+                  <select id="${name}" name="${name}" class="form-select">
+                    ${optionsHTML}
+                  </select>
+                </div>
+              `;
+    }
+
+    function generateTextareaElement(label, name, placeholder, required = false) {
+      return `
+        <div class="mb-3">
+          <label for="${name}" class="form-label">${label}</label>
+          <textarea id="${name}" name="${name}" class="form-control" placeholder="${placeholder}" ${required ? 'required' : ''}></textarea>
+        </div>
+      `;
+    }
+
+    function generateCheckBoxes(label, name, required = false, checkboxes) {
+      let checkboxesHTML = '';
+      for (let i = 0; i < checkboxes.length; i++) {
+        checkboxesHTML += `
+            <div class="form-check">
+            <input type="checkbox" id="${checkboxes[i].value}" name="${name}" class="form-check-input form-check-inline" value="${checkboxes[i].value}">
+            <label class="form-check-label" for="${checkboxes[i].value}">${checkboxes[i].label}</label>
+          </div>
+            `;
+      }
+      return `
+          <div class="mb-3">
+            <label class="form-label">${label}</label>
+              ${checkboxesHTML}
+              </div>
+            `
+    }
+
+
+    function updateFormProperties() {
+      var category = document.getElementById("category").value;
+      var additionalPropertiesDiv = document.getElementById("additional-properties");
+
+      // Clear existing form properties
+      additionalPropertiesDiv.innerHTML = "";
+
+      console.log(category);
+      // Generate and insert form properties based on selected category
+      if (category === "accommodation") {
+        additionalPropertiesDiv.innerHTML += `
+          ${generateFormElement("Amenities (comma-separated)", "hotel_amenities", "text", "Enter hotel amenities", true)}
+        `;
+      } else if (category === "tours") {
+        additionalPropertiesDiv.innerHTML += `
+          ${generateFormElement("Duration", "tour_duration", "text", "Enter duration", true)}
+          ${generateFormElement("Includes", "tour_includes", "text", "Enter includes (comma-separated)", true)}
+          `;
+      } else if (category === "transportation") {
+        additionalPropertiesDiv.innerHTML += `
+          ${generateSelectElement("Vehicle Type", "vehicle_type", [
+          { label: "Car", value: "car" },
+          { label: "Bus", value: "bus" },
+          { label: "Van", value: "van" },
+          { label: "Motorcycle", value: "motorcycle" }
+        ])}
+          ${generateFormElement("Model", "vehicle_model", "text", "Enter model", true)}
+          ${generateFormElement("Year", "vehicle_year", "number", "Enter year", true)}
+          ${generateFormElement("Color", "vehicle_color", "text", "Enter color", true)}
+          ${generateFormElement("Luggage Capacity", "luggage_capacity", "number", "Enter luggage capacity", true)}
+          ${generateFormElement("Seats", "number", "seats", "Enter number of seats", true)}
+          ${generateFormElement("Transmission", "transmission", "text", "Enter transmission type", true)}
+          ${generateFormElement("Fuel Type", "fuel", "text", "Enter fuel type", true)}
+        `;
+      } else if (category === "experiences") {
+        additionalPropertiesDiv.innerHTML += `
+          ${generateFormElement("Duration", "duration", "text", "Enter duration", true)}
+          ${generateFormElement("Includes", "includes", "text", "Enter includes (comma-separated)", true)}
+          ${generateTextareaElement("Highlights (comma-separated)", "highlights", "Enter highlights", true)}
+          ${generateTextareaElement("Itinerary (comma-separated)", "itinerary", "Enter itinerary", true)}
+          ${generateTextareaElement("What to bring (comma-separated)", "bring", "Enter what to bring", false)}
+          ${generateTextareaElement("What to wear (comma-separated)", "wear", "Enter what to wear", false)}
+          ${generateTextareaElement("Additional Info (comma-separated)", "info", "Enter additional info", false)}
+        `;
+      } else if (category === "wildlife") {
+        additionalPropertiesDiv.innerHTML += `
+          ${generateFormElement("Duration", "duration", "text", "Enter duration", true)}
+          ${generateFormElement("Includes", "includes", "text", "Enter includes (comma-separated)", true)}
+          ${generateTextareaElement("Transportation", "transporatation", "Enter transportation details", false)}
+          ${generateTextareaElement("Additional Info (comma-separated)", "info", "Enter additional info", false)}
+        `;
+      } else if (category === "beaches") {
+        additionalPropertiesDiv.innerHTML += `
+        ${generateFormElement("Duration", "duration", "text", "Enter duration", true)}
+        ${generateFormElement("Includes", "includes", "text", "Enter includes (comma-separated)", true)}
+        `;
+      } else if (category === "historical") {
+        additionalPropertiesDiv.innerHTML += `
+        ${generateFormElement("Duration", "duration", "text", "Enter duration", true)}
+        ${generateFormElement("Includes", "includes", "text", "Enter includes (comma-separated)", true)}
+        ${generateFormElement("Heritage Sites", "heritage_sites", "text", "Enter sites (comma-separated)", true)}
+        ${generateFormElement("Archaeological Sites", "archaeo_sites", "text", "Enter sites (comma-separated)", true)}
+        ${generateFormElement("Religious Sites", "religious_sites", "text", "Enter sites (comma-separated)", true)}
+        ${generateFormElement("Museums", "museums", "text", "Enter museums (comma-separated)", true)}
+
+        `;
+      } else if (category === "food") {
+        additionalPropertiesDiv.innerHTML += `
+        ${generateFormElement("Includes", "includes", "text", "Enter includes (comma-separated)", true)}
+        ${generateFormElement("Cuisine Type", "cousine", "text", "Enter cuisine type", true)}
+        ${generateCheckBoxes('Dietery Restrictions', "restrictions", false, [
+          { label: "Vegetarian", value: "vegetarian" },
+          { label: "Vegan", value: "vegan" },
+          { label: "Gluten-free", value: "gluten-free" },
+          { label: "Halal", value: "halal" },
+          { label: "Kosher", value: "kosher" },
+          { label: "Other", value: "other" }
+        ])}
+        ${generateFormElement("Meal Type", "meal_type", "text", "Enter meal type (ex: breakfast)", false)}
+        ${generateFormElement("Meal Time", "meal_time", "text", "Enter meal time (ex: 7:00 AM)", false)}
+        ${generateFormElement("Meal Style", "meal_style", "text", "Enter meal style (ex: buffet)"), false}
+        `;
+      } else if (category === "shopping") {
+        additionalPropertiesDiv.innerHTML += `
+          <div class="row">
+            <div class="col-md-6">
+              ${generateFormElement("Material", "material", "text", "Enter product material")}
+            </div>
+            <div class="col-md-6">
+              ${generateFormElement("Size", "size", "text", "Enter product size (optional)", false)}
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-md-6">
+              ${generateFormElement("Color", "color", "text", "Enter product color (optional)", false)}
+            </div>
+          </div>
+          ${generateFormElement("Weight (grams)", "weight", "number", "Enter product weight (optional)", false)}
+          ${generateFormElement("Manufacturer", "manufacturer", "text", "Enter product manufacturer (optional)", false)}
+          ${generateFormElement("Manufacturer Country", "country", "text", "Enter product manufacturer country (optional)", false)}
+        `;
+      } else if (category === "wellness") {
+        additionalPropertiesDiv.innerHTML += `
+        <div class="row">
+          <div class="col-md-6">
+            ${generateFormElement("Therapist", "therapist", "text", "Enter product therapist")}
+          </div>
+          <div class="col-md-6">
+            ${generateFormElement("Duration", "duration", "text", "Enter product duration")}
+          </div>
+        </div>
+        ${generateFormElement("Amenities", "amenities", "textarea", "Enter product amenities")}
+  `;
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>
